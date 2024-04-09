@@ -2,11 +2,14 @@
   <div class="restaurant--row">
     <h2 class="title">Nos Restaurants</h2>
     <div class="wrapper--card">
-      <RestaurantCard
-        v-for="(card, index) in three_restaurant"
+      <RouterLink
+        class="restaurant--wrapper"
+        v-for="(restaurant, index) in three_restaurant"
         :key="index"
-        :info_restaurant="card"
-      />
+        :to="{ name: 'Restaurant', params: { name: restaurant.name } }"
+      >
+        <RestaurantCard :info_restaurant="restaurant" />
+      </RouterLink>
     </div>
   </div>
 </template>
@@ -31,6 +34,9 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    .restaurant--wrapper {
+      width: 32%;
+    }
   }
 }
 </style>

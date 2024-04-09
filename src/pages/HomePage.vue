@@ -12,16 +12,18 @@
           placeholder="De quoi avez-vous envie ?"
         />
         <div class="search">
-          <div
+          <router-link
             v-for="(restaurant, i) in searchRestaurant"
             :key="i"
-            class="container--restaurant--search"
+            :to="{ name: 'Restaurant', params: { name: restaurant.name } }"
           >
-            <div class="wrapper--img">
-              <img :src="restaurant.image" alt="" />
+            <div class="container--restaurant--search">
+              <div class="wrapper--img">
+                <img :src="restaurant.image" alt="" />
+              </div>
+              <p>{{ restaurant.name }}</p>
             </div>
-            <p>{{ restaurant.name }}</p>
-          </div>
+          </router-link>
         </div>
       </div>
     </div>
